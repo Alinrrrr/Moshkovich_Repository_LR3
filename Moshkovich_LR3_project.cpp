@@ -40,8 +40,20 @@ void EnterCalcNumber() {
         cout << "Число " << X << " не натуральное.\n";
     }
 }
-//double EnterNumberKonec(int num_a) {
-//}
+void EnterNumberKonec() {
+    int X;
+    cout << "Введите натуральное число: "; cin >> X;
+    if (X == int(X) && X > 0) {
+        if ((X % 10) % 2 != 0) {
+            cout << "Число заканчивается нечётной цифрой." << endl;
+        }
+        else {
+            cout << "Число заканчивается чётной цифрой,введите другое число." << endl;
+        }
+    } else {
+        cout << "Число " << X << " не натуральное.\n";
+    }
+}
 bool UserInputDbl(string input) {
     //если строка пустая - ввод некорректен
     if (input.empty()) return false;
@@ -111,8 +123,8 @@ int main() {
     map<int, MenuItem> menu = {
     {1, {"Введите натуральное число X", EnterNumberX}},
     {2, {"Начинается ли оно и заканчивается одной и той же цифрой?", EnterCalcNumber}},
+    {3, {"Заканчивается ли оно нечетной цифрой?",EnterNumberKonec }},
 };
-    //{ 3, {"Заканчивается ли оно нечетной цифрой?"},EnterNumberKonec };
     int choice = 0;
     // Основной цикл программы
     setlocale(LC_ALL, "RU");
