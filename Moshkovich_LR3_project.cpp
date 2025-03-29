@@ -6,10 +6,10 @@
 #include <numeric>
 #include <functional>
 using namespace std;
-
-void EnterNumberX () {
+double X = 0;
+void EnterNumberX() {
     double X;
-    cin >> X;
+    cout << "Введите натуральное число: ";cin >> X;
     if (X == int(X) && X > 0) {
         cout << "Число " << X << " натуральное!\n";
     }
@@ -18,8 +18,28 @@ void EnterNumberX () {
     }
     cout << endl;
 }
-//double EnterCalcNumber(int num_a) {
-//}
+void EnterCalcNumber() {
+    int X, Z;
+    cout << "Введите натуральное число: "; cin >> X;
+    if (X == int(X) && X > 0) {
+        int chislo = 0;
+        int count = 0;
+        while (X) {
+            Z = X % 10;
+            if (count == 0)
+                chislo = Z;
+            count++;
+            X /= 10;
+        }
+        if (chislo == Z) cout << "Начальная и конечная цифры в числе одинаковые" << endl;
+        else {
+            cout << "Начальная и конечная цифры в числе разные" << endl;
+        }
+    }
+    else {
+        cout << "Число " << X << " не натуральное.\n";
+    }
+}
 //double EnterNumberKonec(int num_a) {
 //}
 bool UserInputDbl(string input) {
@@ -89,8 +109,9 @@ struct MenuItem {
 int main() {
     //Создание меню с использованием map
     map<int, MenuItem> menu = {
-       {1, {{"Введите натуральное число X"}, EnterNumberX}} };
-    //{ 2, {"Начинается ли оно и заканчивается одной и той же цифрой?"},EnterCalcNumber };
+    {1, {"Введите натуральное число X", EnterNumberX}},
+    {2, {"Начинается ли оно и заканчивается одной и той же цифрой?", EnterCalcNumber}},
+};
     //{ 3, {"Заканчивается ли оно нечетной цифрой?"},EnterNumberKonec };
     int choice = 0;
     // Основной цикл программы
